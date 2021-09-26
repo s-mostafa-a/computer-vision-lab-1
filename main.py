@@ -1,31 +1,23 @@
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
-from utils import expand, contract, block_matrix
+from utils import get_kernelized_matrix
 
-# im = np.array(Image.open('./figs/bird.bmp'))
-im = np.array(
-    [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20],
-     [21, 22, 23, 24, 25]])
-half_neigh = 1
-kol_neigh = half_neigh * 2 + 1
-print(im.shape)
+image = np.array(Image.open('./figs/bird.bmp'))[:, :, 0]
+# image = np.array(
+#     [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20],
+#      [21, 22, 23, 24, 25]])
 plt.axis('off')
-plt.imshow(im)
+plt.imshow(image)
 plt.show()
-first = im[:, :]
-print(first.shape)
+
+kernel = np.ones((3, 3))
+kernel = kernel / np.sum(kernel)
+
+kernelized_matrix = get_kernelized_matrix(matrix=image, kernel_shape=kernel.shape, mode='same')
+expanded_kernel = np.expand_dims(np.expand_dims(kernel, axis=0), axis=0)
+
+low_path_filtered = np.sum((kernelized_matrix * expanded_kernel), axis=(2, 3))
 plt.axis('off')
-plt.imshow(first)
+plt.imshow(low_path_filtered)
 plt.show()
-ex = expand(first, half_neigh, 'same')
-print(ex.shape)
-plt.axis('off')
-plt.imshow(ex)
-plt.show()
-final_shape = tuple(list(first.shape) + [kol_neigh, kol_neigh])
-sm = ex.reshape(final_shape)
-# sm = block_matrix(ex, (kol_neigh, kol_neigh))
-after_zarb = sm * np.ones((1, 1, kol_neigh, kol_neigh))
-print(after_zarb.shape)
-# sm = contract(ex, half_neigh)
