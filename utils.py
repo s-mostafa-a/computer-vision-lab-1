@@ -92,7 +92,10 @@ def broadcast_tile(matrix, times: tuple):
     return onp.broadcast_to(matrix.reshape(reshape_to), final_shape).reshape(lsd)
 
 
-def expand(small_img, half_neigh_size: int):
+def expand(small_img, half_neigh_size: int, mode: str):
+    assert mode in ('same', 'valid')
+    if mode is 'same':
+        small_img = onp.pad(small_img, half_neigh_size, mode='constant')
     for s in small_img.shape:
         assert half_neigh_size * 2 + 1 <= s, f'neighborhood_size: {half_neigh_size * 2 + 1}, shape: {small_img.shape}'  # noqa
     padding = onp.array([half_neigh_size for _ in small_img.shape])
@@ -103,7 +106,7 @@ def expand(small_img, half_neigh_size: int):
     all_multi_dimensional_indices = _get_hashed_number(range_of_size, small_img.shape)
     for center_of_small in all_multi_dimensional_indices:
         center_of_big = (center_of_small - half_neigh_size) * (
-                    half_neigh_size * 2 + 1) + half_neigh_size
+                half_neigh_size * 2 + 1) + half_neigh_size
         small_lower = center_of_small - padding
         small_upper = center_of_small + padding + 1
         big_lower = center_of_big - padding
