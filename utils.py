@@ -48,3 +48,16 @@ def low_pass_filter_without_broadcast(image: np.array, kernel: np.array, mode: s
                 image[i - padding_i:i + padding_i + 1, j - padding_j:j + padding_j + 1] * kernel)
             final_image[i - padding_i, j - padding_j] = summation
     return final_image
+
+
+def gaussian_kernel(cutoff_frequency=1.):
+    kernel_size = int(cutoff_frequency * 4 + 1)
+    ax = np.linspace(-(kernel_size - 1) / 2., (kernel_size - 1) / 2., kernel_size)
+    gauss = np.exp(-0.5 * np.square(ax) / np.square(cutoff_frequency))
+    kernel = np.outer(gauss, gauss)
+    return kernel / np.sum(kernel)
+
+
+def box_kernel(size=3):
+    kernel = np.ones((size, size))
+    return kernel / np.sum(kernel)
