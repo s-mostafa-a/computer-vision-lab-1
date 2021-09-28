@@ -1,8 +1,7 @@
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
-from utils import _low_pass_filter_using_broadcast, _low_pass_filter_without_broadcast, \
-    hybrid_using_gaussian
+from utils import _low_pass_filter_using_broadcast, _low_pass_filter_without_broadcast
 import time
 
 
@@ -33,16 +32,5 @@ def broadcast_test():
     plt.show()
 
 
-def hybrid_images_test():
-    bottle = np.array(Image.open('figs/bottle.jpg'))
-    starship = np.array(Image.open('figs/starship.jpg'))
-    result = hybrid_using_gaussian(to_be_high_passed=starship, to_be_low_passed=bottle,
-                                   cutoff_frequency=4)
-    # result = hybrid_using_box(to_be_high_passed=cat, to_be_low_passed=dog, size=(21, 21))
-    plt.axis('off')
-    plt.imshow(result)
-    plt.show()
-
-
 if __name__ == "__main__":
-    hybrid_images_test()
+    broadcast_test()

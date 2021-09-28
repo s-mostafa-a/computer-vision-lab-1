@@ -2,7 +2,7 @@ from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
 from my_imfilter import my_imfilter
-from utils import gaussian_kernel, box_kernel
+from utils import gaussian_filter, box_filter
 
 
 def main():
@@ -24,7 +24,7 @@ def main():
     plt.show()
 
     # blur
-    blur_filter = box_kernel(shape=(3, 3))
+    blur_filter = box_filter(shape=(3, 3))
     blur_image = my_imfilter(test_image, blur_filter)
     plt.axis('off')
     plt.imshow(blur_image)
@@ -33,7 +33,7 @@ def main():
     plt.show()
 
     # Large blur
-    large_1d_blur_filter = gaussian_kernel(shape=(25, 1), cutoff_frequency=10)
+    large_1d_blur_filter = gaussian_filter(shape=(25, 1), cutoff_frequency=10)
     large_blur_image = my_imfilter(test_image, large_1d_blur_filter)
     large_blur_image = my_imfilter(large_blur_image, large_1d_blur_filter.T)
     plt.axis('off')
