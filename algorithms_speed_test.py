@@ -1,7 +1,7 @@
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
-from utils import _low_pass_filter_using_broadcast, _low_pass_filter_without_broadcast
+from utils import _low_pass_filter_using_broadcast, _low_pass_filter_without_broadcast, box_filter
 import time
 
 
@@ -14,19 +14,19 @@ def broadcast_test():
     plt.imshow(im)
     plt.show()
 
-    ker = np.ones((3, 3))
-    ker = ker / np.sum(ker)
+    fil = box_filter((3, 3))
+    fil = fil / np.sum(fil)
 
     plt.axis('off')
     start_time = time.time()
-    final = _low_pass_filter_using_broadcast(im, ker)
+    final = _low_pass_filter_using_broadcast(im, fil)
     print(f'broadcast {time.time() - start_time} seconds')
     plt.imshow(final)
     plt.show()
 
     plt.axis('off')
     start_time = time.time()
-    final = _low_pass_filter_without_broadcast(im, ker)
+    final = _low_pass_filter_without_broadcast(im, fil)
     print(f'without broadcast {time.time() - start_time} seconds')
     plt.imshow(final)
     plt.show()
