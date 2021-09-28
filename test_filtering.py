@@ -11,7 +11,7 @@ def main():
     plt.axis('off')
     plt.imshow(test_image)
     plt.title('original image')
-    plt.savefig("./results/test_image.jpeg")
+    plt.savefig("./results/filtering/test_image.jpeg")
     plt.show()
 
     # identity filter
@@ -20,7 +20,7 @@ def main():
     plt.axis('off')
     plt.imshow(identity_image)
     plt.title('identity image')
-    plt.savefig("./results/identity_image.jpeg")
+    plt.savefig("./results/filtering/identity_image.jpeg")
     plt.show()
 
     # blur
@@ -29,7 +29,7 @@ def main():
     plt.axis('off')
     plt.imshow(blur_image)
     plt.title('blur image')
-    plt.savefig("./results/blur_image.jpeg")
+    plt.savefig("./results/filtering/blur_image.jpeg")
     plt.show()
 
     # Large blur
@@ -39,7 +39,7 @@ def main():
     plt.axis('off')
     plt.imshow(large_blur_image)
     plt.title('large blur image')
-    plt.savefig("./results/large_blur_image.jpeg")
+    plt.savefig("./results/filtering/large_blur_image.jpeg")
     plt.show()
 
     # Oriented filter (Sobel Operator)
@@ -48,7 +48,7 @@ def main():
     plt.axis('off')
     plt.imshow(sobel_image + 128)
     plt.title('sobel image')
-    plt.savefig("./results/sobel_image.jpeg")
+    plt.savefig("./results/filtering/sobel_image.jpeg")
     plt.show()
 
     # High pass filter (Discrete Laplacian)
@@ -57,7 +57,7 @@ def main():
     plt.axis('off')
     plt.imshow(laplacian_image + 128)
     plt.title('laplacian image')
-    plt.savefig("./results/laplacian_image.jpeg")
+    plt.savefig("./results/filtering/laplacian_image.jpeg")
     plt.show()
 
     # High pass "filter" alternative
@@ -65,7 +65,7 @@ def main():
     plt.axis('off')
     plt.imshow(alternative_high_pass_image + 128)
     plt.title('alternative high pass image')
-    plt.savefig("./results/alternative_high_pass_image.jpeg")
+    plt.savefig("./results/filtering/alternative_high_pass_image.jpeg")
     plt.show()
 
 
