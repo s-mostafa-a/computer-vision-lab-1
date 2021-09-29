@@ -33,8 +33,9 @@ def main():
             plt.axis('off')
             plt.title(f'{ipc[0]}_{ipc[1]} {r.shape[0]}x{r.shape[1]}')
             plt.imshow(r)
-            plt.savefig(f'./results/hybrid/{ipc[0]}_{ipc[1]}/{r.shape[0]}x{r.shape[1]}.jpg')
             plt.show()
+            Image.fromarray(r).save(
+                f'./results/hybrid/{ipc[0]}_{ipc[1]}/{r.shape[0]}x{r.shape[1]}.jpg')
 
 
 if __name__ == "__main__":
