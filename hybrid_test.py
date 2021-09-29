@@ -25,9 +25,7 @@ def _hybrid(to_be_high_passed, to_be_low_passed, filter):
     return high_pass + low_pass
 
 
-def hybrid_images_test():
-
-
+def main():
     # my hybrid images
     child = np.array(Image.open('figs/childhood.jpg'))
     teen = np.array(Image.open('figs/teenage.jpg'))
@@ -52,4 +50,4 @@ def hybrid_images_test():
 
 
 if __name__ == "__main__":
-    hybrid_images_test()
+    main()

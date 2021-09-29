@@ -5,7 +5,7 @@ from utils import _low_pass_filter_using_broadcast, _low_pass_filter_without_bro
 import time
 
 
-def broadcast_test():
+def main():
     im = np.array(Image.open('./figs/bird.bmp'))[:, :, 0]
     # im = np.array(
     #     [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20],
@@ -33,4 +33,4 @@ def broadcast_test():
 
 
 if __name__ == "__main__":
-    broadcast_test()
+    main()
