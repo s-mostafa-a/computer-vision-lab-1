@@ -14,7 +14,7 @@ def get_resized_images(image, scales=5):
 
 
 def main():
-    image_pairs_cutoff = [('dog', 'cat', 'bmp', 7),
+    image_pairs_cutoff = [('cat', 'dog', 'bmp', 7),
                           ('einstein', 'marilyn', 'bmp', 4),
                           ('bicycle', 'motorcycle', 'bmp', 9),
                           ('submarine', 'fish', 'bmp', 4),
