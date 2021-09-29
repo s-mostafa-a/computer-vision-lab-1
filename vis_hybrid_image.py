@@ -14,15 +14,27 @@ def get_resized_images(image, scales=5):
 
 
 def main():
-    cat = np.array(Image.open('./figs/cat.bmp'))
-    dog = np.array(Image.open('./figs/dog.bmp'))
-    result = hybrid_using_gaussian(to_be_high_passed=cat, to_be_low_passed=dog, cutoff_frequency=5)
-    result[result > 255] = 255
-    result[result < 0] = 0
-    for r in get_resized_images(result.astype(np.uint8)):
-        plt.axis('off')
-        plt.imshow(r)
-        plt.show()
+    image_pairs_cutoff = [('dog', 'cat', 'bmp', 7),
+                          ('einstein', 'marilyn', 'bmp', 4),
+                          ('bicycle', 'motorcycle', 'bmp', 9),
+                          ('submarine', 'fish', 'bmp', 4),
+                          ('bird', 'plane', 'bmp', 6),
+                          ('bottle', 'starship', 'jpg', 5),
+                          ('childhood', 'teenage', 'jpg', 3)]
+
+    for ipc in image_pairs_cutoff:
+        low = np.array(Image.open(f'./figs/{ipc[0]}.{ipc[2]}'))
+        high = np.array(Image.open(f'./figs/{ipc[1]}.{ipc[2]}'))
+        result = hybrid_using_gaussian(to_be_high_passed=high, to_be_low_passed=low,
+                                       cutoff_frequency=ipc[3])
+        result[result > 255] = 255
+        result[result < 0] = 0
+        for r in get_resized_images(result.astype(np.uint8)):
+            plt.axis('off')
+            plt.title(f'{ipc[0]}_{ipc[1]} {r.shape[0]}x{r.shape[1]}')
+            plt.imshow(r)
+            plt.savefig(f'./results/hybrid/{ipc[0]}_{ipc[1]}/{r.shape[0]}x{r.shape[1]}.jpg')
+            plt.show()
 
 
 if __name__ == "__main__":
