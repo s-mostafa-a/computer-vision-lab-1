@@ -8,9 +8,8 @@ def save_fourier_transforms(ft, low, high, path='./results/frequency', name='tes
     ft2 = np.zeros_like(ft)
     ft2[low:high, low:high] = ft[low:high, low:high]
     rft = irfft2(ft2)
-    img = Image.fromarray(rft)
-    img = img.convert('L')
-    img.save(f'{path}/{name}_{low}_to_{high - 1}.png')
+    result = Image.fromarray(rft).convert('L')
+    result.save(f'{path}/{name}_{low}_to_{high - 1}.png')
 
 
 def main():
