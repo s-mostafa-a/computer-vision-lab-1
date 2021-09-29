@@ -28,12 +28,19 @@ def _hybrid(to_be_high_passed, to_be_low_passed, filter):
 def hybrid_images_test():
     starship = np.array(Image.open('figs/starship.jpg'))
     bottle = np.array(Image.open('figs/bottle.jpg'))
-    result = hybrid_using_gaussian(to_be_high_passed=starship, to_be_low_passed=bottle,
-                                   cutoff_frequency=5)
-    # result = hybrid_using_box(to_be_high_passed=cat, to_be_low_passed=dog, size=(21, 21))
+    child = np.array(Image.open('figs/childhood.jpg'))
+    teen = np.array(Image.open('figs/teenage.jpg'))
+    result = hybrid_using_gaussian(to_be_high_passed=teen, to_be_low_passed=child,
+                                   cutoff_frequency=3)
     plt.axis('off')
     plt.imshow(result)
     plt.show()
+    result = hybrid_using_gaussian(to_be_high_passed=starship, to_be_low_passed=bottle,
+                                   cutoff_frequency=5)
+    plt.axis('off')
+    plt.imshow(result)
+    plt.show()
+    # result = hybrid_using_box(to_be_high_passed=cat, to_be_low_passed=dog, size=(21, 21))
 
 
 if __name__ == "__main__":
