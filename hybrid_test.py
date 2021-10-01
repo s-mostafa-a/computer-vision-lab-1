@@ -25,7 +25,7 @@ def _hybrid(to_be_high_passed, to_be_low_passed, filter):
     return high_pass + low_pass
 
 
-def main():
+def main(save=False):
     # my hybrid images
     child = np.array(Image.open('figs/childhood.jpg'))
     teen = np.array(Image.open('figs/teenage.jpg'))
@@ -34,7 +34,8 @@ def main():
     plt.axis('off')
     plt.title("childhood behind teenage")
     plt.imshow(result)
-    plt.savefig("./results/hybrid/child_teen.png")
+    if save:
+        plt.savefig("./results/hybrid/child_teen.png")
     plt.show()
 
     starship = np.array(Image.open('figs/starship.jpg'))
@@ -44,7 +45,8 @@ def main():
     plt.axis('off')
     plt.title("bottle behind starship rocket")
     plt.imshow(result)
-    plt.savefig("./results/hybrid/bottle_starship.png")
+    if save:
+        plt.savefig("./results/hybrid/bottle_starship.png")
     plt.show()
     # result = hybrid_using_box(to_be_high_passed=cat, to_be_low_passed=dog, size=(21, 21))
 
