@@ -1,13 +1,13 @@
 from PIL import Image
 import numpy as np
 import matplotlib.pyplot as plt
-from my_imfilter import my_imfilter
-from utils import gaussian_filter, box_filter
+from code.my_imfilter import my_imfilter
+from code.utils import gaussian_filter, box_filter
 
 
 def main(save=False):
     # setup
-    test_image = np.array(Image.open('./figs/cat.bmp'))
+    test_image = np.array(Image.open('../data/figs/cat.bmp'))
     plt.axis('off')
     plt.imshow(test_image)
     plt.title('original image')

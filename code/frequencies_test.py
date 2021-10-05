@@ -13,7 +13,7 @@ def save_fourier_transforms(ft, low, high, path='./results/frequency', name='tes
 
 
 def main():
-    gray_bottle = np.array(Image.open("./figs/bottle.jpg").convert('L'))
+    gray_bottle = np.array(Image.open("../data/figs/bottle.jpg").convert('L'))
     plt.axis('off')
     plt.imshow(gray_bottle, cmap='gray')
     plt.savefig('./results/frequency/gray_bottle.png')

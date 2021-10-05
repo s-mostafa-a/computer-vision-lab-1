@@ -1,7 +1,7 @@
 import numpy as np
 from PIL import Image
 from matplotlib import pyplot as plt
-from hybrid_test import hybrid_using_gaussian
+from code.hybrid_test import hybrid_using_gaussian
 
 
 def get_resized_images(image, scales=5):

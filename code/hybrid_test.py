@@ -2,8 +2,8 @@ import numpy as np
 from PIL import Image
 from matplotlib import pyplot as plt
 
-from my_imfilter import get_high_pass_image, get_low_pass_image
-from utils import box_filter, gaussian_filter
+from code.my_imfilter import get_high_pass_image, get_low_pass_image
+from code.utils import box_filter, gaussian_filter
 
 
 def hybrid_using_box(to_be_high_passed, to_be_low_passed, shape):
@@ -27,8 +27,8 @@ def _hybrid(to_be_high_passed, to_be_low_passed, filter):
 
 def main(save=False):
     # my hybrid images
-    child = np.array(Image.open('figs/childhood.jpg'))
-    teen = np.array(Image.open('figs/teenage.jpg'))
+    child = np.array(Image.open('../data/figs/childhood.jpg'))
+    teen = np.array(Image.open('../data/figs/teenage.jpg'))
     result = hybrid_using_gaussian(to_be_high_passed=teen, to_be_low_passed=child,
                                    cutoff_frequency=3)
     plt.axis('off')
@@ -38,8 +38,8 @@ def main(save=False):
         plt.savefig("./results/hybrid/child_teen.png")
     plt.show()
 
-    starship = np.array(Image.open('figs/starship.jpg'))
-    bottle = np.array(Image.open('figs/bottle.jpg'))
+    starship = np.array(Image.open('../data/figs/starship.jpg'))
+    bottle = np.array(Image.open('../data/figs/bottle.jpg'))
     result = hybrid_using_gaussian(to_be_high_passed=starship, to_be_low_passed=bottle,
                                    cutoff_frequency=5)
     plt.axis('off')

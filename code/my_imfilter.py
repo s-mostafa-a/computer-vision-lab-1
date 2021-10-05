@@ -1,6 +1,6 @@
 import numpy as np
 
-from utils import _get_low_pass_for_each_channel
+from code.utils import _get_low_pass_for_each_channel
 
 
 def my_imfilter(image, filter):
